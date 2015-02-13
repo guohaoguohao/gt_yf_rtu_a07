@@ -1,0 +1,37 @@
+main
+{
+  StorePath "" ;存盘路径
+  ProgramName "" ;程序名
+  DeviceID "";设备编号
+}
+
+SerialDebug ;调试串口
+{
+  SerialPortNum ;串口号
+  Baud ;串口波特率
+}
+
+Serial232 ;232串口
+{
+  SerialPortNum ;串口号
+  Baud ;串口波特率
+}
+
+Serial485 ;485串口
+{
+  SerialPortNum ;串口号
+  Baud ;串口波特率
+}
+
+SerialGPRS ;GPRS串口
+{
+  SerialPortNum ;串口号
+  Baud ;串口波特率
+}
+
+SerialZigBee ;ZigBee串口
+{
+  SerialPortNum ;串口号
+  Baud ;串口波特率
+}
+

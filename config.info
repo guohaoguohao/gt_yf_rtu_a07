@@ -1,0 +1,61 @@
+MainParam
+{
+  StorePath "/home/kevin/rtu/data"   ;存盘路径
+  ProgramName "" ;程序名
+  DeviceID ""    ;设备编号
+  StationName "" ;站名
+}
+
+ServerParam 
+{
+   SerialDebug ;调试串口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum ;串口号
+     Baud ;串口波特率
+   }
+
+   Serial232 ;232串口
+   {
+     AvailabilitySign 1       ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum ;串口号
+     Baud ;串口波特率
+   }
+
+   Serial485 ;485串口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum ;串口号
+     Baud ;串口波特率
+   }
+
+   SerialGPRS ;GPRS串口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum ;串口号
+     Baud ;串口波特率
+   }
+
+   SerialZigBee ;ZigBee串口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum ;串口号
+     Baud ;串口波特率
+   }
+   
+   Net100 ;百兆网络端口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+   }
+   
+   Net1000  ;千兆网络端口
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+   }
+   
+   ADIO ;AD/IO数据采集
+   {
+     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+   }
+}
+
