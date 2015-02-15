@@ -22,10 +22,15 @@ int main(int argc, char** argv) {
   //控制台多线程输出
   cout.sync_with_stdio(true);
   try {
+    cout << "****************************" << endl;
+    cout << "you can type \"quit\" to exit" << endl;
+    cout << "****************************" << endl;
+    cout << "you can type \"status\" to query" << endl;
+    cout << "type something to do something............" << endl;
     // 初始化日志
     Log log;
     log.Init();
-    LOG_INFO("**************Rtu守护进程启动*****************");
+    LOG_INFO("**************守护进程启动*****************");
     if (!configure::Configuration::LoadConfigFile()) {
       LOG_ERR("读取配置信息出错，程序无法正常运行");
       // todo:something
@@ -48,11 +53,6 @@ int main(int argc, char** argv) {
     }
     //启动守护进程提供的服务
     instance->Start();
-    cout << "****************************" << endl;
-    cout << "you can type \"quit\" to exit" << endl;
-    cout << "****************************" << endl;
-    cout << "you can type \"status\" to query" << endl;
-    cout << "type something to do something............" << endl;
     string input;
     while (true) {
       getline(cin, input);

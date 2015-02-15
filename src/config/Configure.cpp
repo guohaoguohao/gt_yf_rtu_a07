@@ -68,7 +68,9 @@ bool Configuration::LoadConfigFile() {
     serverParamConfig.s232config.SerialPortNum =
         pt.get<int>("ServerParam.Serial232.SerialPortNum", 0);
     serverParamConfig.s232config.Baud =
-        pt.get<int>("ServerParam.Serial232.Baud", 12800);
+        pt.get<int>("ServerParam.Serial232.Baud", 115200);
+    serverParamConfig.s232config.modal =
+        pt.get<int>("ServerParam.Serial232.modal", 0);
     // ServerParam.Serial485
     serverParamConfig.s485config.AvailabilitySign =
         pt.get<bool>("ServerParam.Serial485.AvailabilitySign", false);

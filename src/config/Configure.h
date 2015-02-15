@@ -28,6 +28,7 @@ typedef struct {
   bool AvailabilitySign;
   int SerialPortNum;
   int Baud;
+  int modal;
 }Serial232Configuration;
 
 typedef struct {
