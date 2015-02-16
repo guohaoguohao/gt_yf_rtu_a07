@@ -55,6 +55,9 @@ typedef struct {
 
 typedef struct {
   bool AvailabilitySign;
+  std::string ip;
+  int port;
+  int modal;
 }Net1000Configuration;
 
 typedef struct {

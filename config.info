@@ -17,30 +17,31 @@ ServerParam
 
    Serial232 ;232串口
    {
-     AvailabilitySign 1       ;是否启用服务 ,0：禁用，1：启用
-     SerialPortNum ;串口号
-     Baud ;串口波特率
+     AvailabilitySign 0  ;是否启用服务 ,0：禁用，1：启用
+     SerialPortNum 0     ;串口号
+     Baud 9600         ;串口波特率
+     modal 0             ;工作模式：0--服务端，1--客户端
    }
 
    Serial485 ;485串口
    {
      AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
-     SerialPortNum ;串口号
-     Baud ;串口波特率
+     SerialPortNum            ;串口号
+     Baud                     ;串口波特率
    }
 
    SerialGPRS ;GPRS串口
    {
      AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
-     SerialPortNum ;串口号
-     Baud ;串口波特率
+     SerialPortNum            ;串口号
+     Baud                     ;串口波特率
    }
 
    SerialZigBee ;ZigBee串口
    {
      AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
-     SerialPortNum ;串口号
-     Baud ;串口波特率
+     SerialPortNum            ;串口号
+     Baud                     ;串口波特率
    }
    
    Net100 ;百兆网络端口
@@ -50,7 +51,10 @@ ServerParam
    
    Net1000  ;千兆网络端口
    {
-     AvailabilitySign 0       ;是否启用服务 ,0：禁用，1：启用
+     AvailabilitySign 1       ;是否启用服务 ,0：禁用，1：启用
+     Ip "192.168.3.97"       ;ip地址
+     port 1502             ；端口号
+     modal 0    ;工作模式：0--服务端，1--客户端, 2--非modbus协议
    }
    
    ADIO ;AD/IO数据采集

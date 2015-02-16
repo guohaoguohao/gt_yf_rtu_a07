@@ -63,26 +63,29 @@ class Serial232 : public server::IServer {
   /**
    *
    */
-  const uint16_t UT_BITS_ADDRESS = 0x13;
-  const uint16_t UT_BITS_NB = 0x25;
+  const uint16_t UT_BITS_ADDRESS = 0x00;
+  const uint16_t UT_BITS_NB = 0x00;
   uint8_t UT_BITS_TAB[5];
 
-  const uint16_t UT_INPUT_BITS_ADDRESS = 0xC4;
-  const uint16_t UT_INPUT_BITS_NB = 0x16;
+  const uint16_t UT_INPUT_BITS_ADDRESS = 0x00;
+  const uint16_t UT_INPUT_BITS_NB = 0x00;
   uint8_t UT_INPUT_BITS_TAB[3];
 
-  const uint16_t UT_REGISTERS_ADDRESS = 0x6B;
+
+  /*-----------------register--0x03------------------------*/
+  const uint16_t UT_REGISTERS_ADDRESS = 0x00;
   /* Raise a manual exception when this adress is used for the first byte */
-  const uint16_t UT_REGISTERS_ADDRESS_SPECIAL = 0x6C;
-  const uint16_t UT_REGISTERS_NB = 0x3;
-  uint16_t UT_REGISTERS_TAB[3];
+  const uint16_t UT_REGISTERS_NB = 20000;
+  uint16_t UT_REGISTERS_TAB[20000];
+  /*---------------------------------------------------------*/
+  const uint16_t UT_REGISTERS_ADDRESS_SPECIAL = 0x00;
   /* If the following value is used, a bad response is sent.
      It's better to test with a lower value than
      UT_REGISTERS_NB_POINTS to try to raise a segfault. */
-  const uint16_t UT_REGISTERS_NB_SPECIAL = 0x2;
+  const uint16_t UT_REGISTERS_NB_SPECIAL = 0x0;
 
-  const uint16_t UT_INPUT_REGISTERS_ADDRESS = 0x08;
-  const uint16_t UT_INPUT_REGISTERS_NB = 0x1;
+  const uint16_t UT_INPUT_REGISTERS_ADDRESS = 0x00;
+  const uint16_t UT_INPUT_REGISTERS_NB = 0x0;
   uint16_t UT_INPUT_REGISTERS_TAB[1];
 
   const float UT_REAL = 916.540649;

@@ -94,13 +94,19 @@ bool Configuration::LoadConfigFile() {
         pt.get<int>("ServerParam.SerialZigbee.Baud", 0);
     // ServerParam.Net100
     serverParamConfig.n100config.AvailabilitySign =
-        pt.get<bool>("ServerParam.n100config.AvailabilitySign", false);
+        pt.get<bool>("ServerParam.Net100.AvailabilitySign", false);
     // ServerParam.Net1000
     serverParamConfig.n1000config.AvailabilitySign =
-        pt.get<bool>("ServerParam.n1000config.AvailabilitySign", false);
+        pt.get<bool>("ServerParam.Net1000.AvailabilitySign", false);
+    serverParamConfig.n1000config.ip =
+        pt.get<string>("ServerParam.Net1000.Ip", "192.168.3.97");
+    serverParamConfig.n1000config.port =
+        pt.get<int>("ServerParam.Net1000.port", 1502);
+    serverParamConfig.n1000config.modal =
+        pt.get<int>("ServerParam.Net1000.modal", 0);
     // ServerParam.ADIO
     serverParamConfig.adioconfig.AvailabilitySign =
-        pt.get<bool>("ServerParam.adioconfig.AvailabilitySign", false);
+        pt.get<bool>("ServerParam.ADIO.AvailabilitySign", false);
   }
   catch (boost::property_tree::ptree_error& ex) {
     string r = "读取用户配置时出错：";

@@ -7,12 +7,13 @@
 
 #include <thread>
 #include <chrono>
+#include <string.h>
 #include <boost/format.hpp>
 #include "Serial232.h"
 using namespace std;
 namespace serial232n {
 
-map<int, string> Serial232::port = {{0, "/dev/ttyS0"},
+map<int, string> Serial232::port = {{0, "/dev/ttyUSB0"},
                                     {1, "/dev/ttyS1"},
                                     {2, "/dev/ttyS2"},
                                     {3, "/dev/ttyS3"},
@@ -92,16 +93,19 @@ bool Serial232::Init() {
     /* Examples from PI_MODBUS_300.pdf.
        Only the read-only input values are assigned. */
 
-    /** INPUT STATUS **/
-    modbus_set_bits_from_bytes(mb_mapping->tab_input_bits,
-                               UT_INPUT_BITS_ADDRESS, UT_INPUT_BITS_NB,
-                               UT_INPUT_BITS_TAB);
+    /** INPUT STATUS 不需要bit操作**/
+    //    modbus_set_bits_from_bytes(mb_mapping->tab_input_bits,
+    //                               UT_INPUT_BITS_ADDRESS, UT_INPUT_BITS_NB,
+    //                               UT_INPUT_BITS_TAB);
 
     /** INPUT REGISTERS **/
-    for (int i = 0; i < UT_INPUT_REGISTERS_NB; i++) {
-      mb_mapping->tab_input_registers[UT_INPUT_REGISTERS_ADDRESS + i] =
-          UT_INPUT_REGISTERS_TAB[i];
-      ;
+    //    for (int i = 0; i < UT_INPUT_REGISTERS_NB; i++) {
+    //      mb_mapping->tab_input_registers[UT_INPUT_REGISTERS_ADDRESS + i] =
+    //          UT_INPUT_REGISTERS_TAB[i];
+    //      ;
+    //    }
+    for (int i = 0; i < UT_REGISTERS_NB; i++) {
+      mb_mapping->tab_registers[UT_REGISTERS_ADDRESS + i] = i;
     }
     if (modbus_connect(ctx) == -1) {
       boost::format msg =
@@ -164,21 +168,21 @@ void Serial232::DoWork() {
       break;
     }
     /* Read holding registers */
-    if (query[header_length] == 0x03) {
-      if (MODBUS_GET_INT16_FROM_INT8(query, header_length + 3) ==
-          UT_REGISTERS_NB_SPECIAL) {
-        LOG_COM_INFO(this, "Set an incorrect number of values");
-        MODBUS_SET_INT16_TO_INT8(query, header_length + 3,
-                                 UT_REGISTERS_NB_SPECIAL - 1);
-      } else if (MODBUS_GET_INT16_FROM_INT8(query, header_length + 1) ==
-                 UT_REGISTERS_ADDRESS_SPECIAL) {
-        LOG_COM_INFO(this,
-                     "Reply to this special register address by an exception");
-        modbus_reply_exception(ctx, query,
-                               MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY);
-        continue;
-      }
-    }
+//    if (query[header_length] == 0x03) {
+//      if (MODBUS_GET_INT16_FROM_INT8(query, header_length + 3) ==
+//          UT_REGISTERS_NB_SPECIAL) {
+//        LOG_COM_INFO(this, "Set an incorrect number of values");
+//        MODBUS_SET_INT16_TO_INT8(query, header_length + 3,
+//                                 UT_REGISTERS_NB_SPECIAL - 1);
+//      } else if (MODBUS_GET_INT16_FROM_INT8(query, header_length + 1) ==
+//                 UT_REGISTERS_ADDRESS_SPECIAL) {
+//        LOG_COM_INFO(this,
+//                     "Reply to this special register address by an exception");
+//        modbus_reply_exception(ctx, query,
+//                               MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY);
+//        continue;
+//      }
+//    }
     rc = modbus_reply(ctx, query, rc, mb_mapping);
     if (rc == -1) {
       break;
