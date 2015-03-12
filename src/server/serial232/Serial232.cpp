@@ -13,7 +13,7 @@
 using namespace std;
 namespace serial232n {
 
-map<int, string> Serial232::port = {{0, "/dev/ttyUSB0"},
+map<int, string> Serial232::port = {{0, "/dev/ttyS0"},
                                     {1, "/dev/ttyS1"},
                                     {2, "/dev/ttyS2"},
                                     {3, "/dev/ttyS3"},

@@ -58,6 +58,7 @@ Net1000::Net1000(const configure::Net1000Configuration* config):
 bool Net1000::Init() {
   if (modal == SERVER_OR_CLIENT::SERVER) {
     LOG_COM_INFO(this, "初始化服务端");
+    LOG_COM_INFO(this, ip);
     use_backend = PHYSICAL_PORT::TCP;
     ctx = modbus_new_tcp(ip.data(), port);
     query = reinterpret_cast<uint8_t *>(malloc(MODBUS_TCP_MAX_ADU_LENGTH));
